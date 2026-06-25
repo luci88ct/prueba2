@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jairobiix</title>
+  <meta name="description" content="Página simple de Jairobiix con Twitch, YouTube e Instagram." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1115;
+      --surface: #171a21;
+      --surface-2: #1f2430;
+      --text: #f5f7fb;
+      --muted: #a8b0c0;
+      --border: rgba(255,255,255,.10);
+      --accent: #9147ff;
+      --accent-2: #ff0033;
+      --radius: 16px;
+      --space-2: .5rem;
+      --space-3: .75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --max: 980px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    img,iframe{display:block;max-width:100%}
+    .wrap{width:min(calc(100% - 24px), var(--max));margin:0 auto}
+    header{padding:var(--space-8) 0 var(--space-6)}
+    .brand{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap}
+    .logo{display:flex;align-items:center;gap:.8rem;font-weight:700;font-size:1.15rem}
+    .mark{width:42px;height:42px;border-radius:12px;background:var(--surface-2);border:1px solid var(--border);display:grid;place-items:center}
+    .mark svg{width:22px;height:22px}
+    .links{display:flex;gap:.75rem;flex-wrap:wrap}
+    .btn{min-height:44px;padding:.8rem 1rem;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:.95rem;font-weight:600}
+    .btn.primary{background:var(--accent);border-color:transparent}
+    main{padding-bottom:var(--space-10)}
+    .hero{padding:var(--space-4) 0 var(--space-8)}
+    h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;max-width:10ch}
+    .hero p{margin-top:var(--space-4);color:var(--muted);max-width:60ch}
+    .grid{display:grid;gap:var(--space-5)}
+    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .card-head{padding:var(--space-5);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap}
+    .card-head h2{font-size:1.1rem}
+    .card-head p{font-size:.95rem;color:var(--muted)}
+    .card-body{padding:var(--space-5)}
+    .video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#0b0d12}
+    .triple{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+    .mini{padding:var(--space-5);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+    .mini h3{font-size:1rem;margin-bottom:.35rem}
+    .mini p{font-size:.95rem;color:var(--muted)}
+    .list{display:grid;gap:.75rem}
+    .list a{padding:1rem 1rem;border-radius:12px;background:var(--surface-2);border:1px solid var(--border);font-weight:600}
+    .muted{color:var(--muted);font-size:.95rem}
+    footer{padding:var(--space-8) 0;color:var(--muted);font-size:.92rem}
+    @media (max-width: 840px){
+      .triple{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <div class="logo">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5H19V13C19 16.866 15.866 20 12 20C8.13401 20 5 16.866 5 13V5Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M8.5 9.5L11.5 12.5L15.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span>Jairobiix</span>
+      </div>
+      <nav class="links" aria-label="Redes principales">
+        <a class="btn primary" href="https://www.twitch.tv/jairobiix" target="_blank" rel="noopener noreferrer">Twitch</a>
+        <a class="btn" href="https://www.youtube.com/@Jairobiix" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a class="btn" href="https://www.instagram.com/jairobiix/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Twitch, YouTube e Instagram en una sola página.</h1>
+      <p>Página simple para mostrar tu canal, tus vídeos y tus redes sin bloques de texto largos ni diseño recargado.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Directo en Twitch</h2>
+            <p>Player del canal incrustado.</p>
+          </div>
+          <a class="btn" href="https://www.twitch.tv/jairobiix" target="_blank" rel="noopener noreferrer">Abrir canal</a>
+        </div>
+        <div class="card-body">
+          <iframe class="video" src="https://player.twitch.tv/?channel=jairobiix&parent=localhost" allowfullscreen title="Twitch Jairobiix"></iframe>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Último vídeo de YouTube</h2>
+            <p>Bloque principal para destacar tu vídeo más reciente.</p>
+          </div>
+          <a class="btn" href="https://www.youtube.com/@Jairobiix" target="_blank" rel="noopener noreferrer">Ir a YouTube</a>
+        </div>
+        <div class="card-body">
+          <iframe class="video" id="youtube-player" src="https://www.youtube.com/embed?listType=user_uploads&list=Jairobiix" title="Último vídeo YouTube"></iframe>
+        </div>
+      </article>
+
+      <section class="triple">
+        <article class="mini">
+          <h3>Twitch</h3>
+          <p>Botón directo a tu canal y espacio para el directo.</p>
+        </article>
+        <article class="mini">
+          <h3>YouTube</h3>
+          <p>Vídeo destacado y acceso rápido al canal.</p>
+        </article>
+        <article class="mini">
+          <h3>Instagram</h3>
+          <p>Enlace directo a tus reels y publicaciones.</p>
+        </article>
+      </section>
+
+      <article class="card">
+        <div class="card-head">
+          <div>
+            <h2>Redes</h2>
+            <p>Accesos rápidos sin más vueltas.</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="list">
+            <a href="https://www.twitch.tv/jairobiix" target="_blank" rel="noopener noreferrer">Twitch — ver stream y canal</a>
+            <a href="https://www.youtube.com/@Jairobiix" target="_blank" rel="noopener noreferrer">YouTube — ver vídeos</a>
+            <a href="https://www.instagram.com/jairobiix/" target="_blank" rel="noopener noreferrer">Instagram — ver reels y publicaciones</a>
+          </div>
+        </div>
+      </article>
+
+      <p class="muted">Importante: cuando el dominio quede funcionando, cambia <strong>parent=localhost</strong> por tu dominio real en el bloque de Twitch.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Diseño simplificado para Jairobiix.</p>
+  </footer>
+
+  <script>
+    const youtubeFeed = 'https://www.youtube.com/feeds/videos.xml?channel_id=TU_CHANNEL_ID';
+    const rssProxy = 'https://api.rss2json.com/v1/api.json?rss_url=';
+    async function loadYouTubeFeed() {
+      const player = document.getElementById('youtube-player');
+      try {
+        const response = await fetch(rssProxy + encodeURIComponent(youtubeFeed));
+        const data = await response.json();
+        const first = data.items && data.items[0];
+        if (first && first.link) {
+          const match = first.link.match(/v=([^&]+)/);
+          if (match) player.src = `https://www.youtube.com/embed/${match[1]}`;
+        }
+      } catch (error) {
+        console.warn('No se pudo cargar YouTube automáticamente.', error);
+      }
+    }
+    loadYouTubeFeed();
+  </script>
+</body>
+</html>
