@@ -4,183 +4,597 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jairobiix</title>
-  <meta name="description" content="Página simple de Jairobiix con Twitch, YouTube e Instagram." />
+  <meta name="description" content="Portal oficial de Jairobiix con Twitch, YouTube e Instagram." />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #0f1115;
-      --surface: #171a21;
-      --surface-2: #1f2430;
-      --text: #f5f7fb;
-      --muted: #a8b0c0;
-      --border: rgba(255,255,255,.10);
-      --accent: #9147ff;
-      --accent-2: #ff0033;
-      --radius: 16px;
-      --space-2: .5rem;
-      --space-3: .75rem;
-      --space-4: 1rem;
-      --space-5: 1.25rem;
-      --space-6: 1.5rem;
-      --space-8: 2rem;
-      --space-10: 2.5rem;
-      --max: 980px;
+    :root,[data-theme="dark"]{
+      --bg:#05030a;
+      --bg-soft:#12081f;
+      --bg-hero:#160927;
+      --gold:#f7d26b;
+      --gold-soft:#d8b25a;
+      --text:#f4f4f5;
+      --muted:#a1a1b5;
+      --border:rgba(248,250,252,.18);
+      --panel:#11081f;
+      --panel-soft:#1b102f;
+      --radius-lg:22px;
+      --shadow-soft:0 22px 60px rgba(0,0,0,.55);
     }
+
     *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-      min-height:100vh;
+
+    html{
+      scroll-behavior:smooth;
     }
+
+    body{
+      min-height:100vh;
+      font-family:'Inter',system-ui,sans-serif;
+      background:radial-gradient(circle at 10% 0%,#2c1152 0,#05030a 55%) fixed;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+    }
+
     a{color:inherit;text-decoration:none}
-    img,iframe{display:block;max-width:100%}
-    .wrap{width:min(calc(100% - 24px), var(--max));margin:0 auto}
-    header{padding:var(--space-8) 0 var(--space-6)}
-    .brand{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap}
-    .logo{display:flex;align-items:center;gap:.8rem;font-weight:700;font-size:1.15rem}
-    .mark{width:42px;height:42px;border-radius:12px;background:var(--surface-2);border:1px solid var(--border);display:grid;place-items:center}
-    .mark svg{width:22px;height:22px}
-    .links{display:flex;gap:.75rem;flex-wrap:wrap}
-    .btn{min-height:44px;padding:.8rem 1rem;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:.95rem;font-weight:600}
-    .btn.primary{background:var(--accent);border-color:transparent}
-    main{padding-bottom:var(--space-10)}
-    .hero{padding:var(--space-4) 0 var(--space-8)}
-    h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;max-width:10ch}
-    .hero p{margin-top:var(--space-4);color:var(--muted);max-width:60ch}
-    .grid{display:grid;gap:var(--space-5)}
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-    .card-head{padding:var(--space-5);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap}
-    .card-head h2{font-size:1.1rem}
-    .card-head p{font-size:.95rem;color:var(--muted)}
-    .card-body{padding:var(--space-5)}
-    .video{aspect-ratio:16/9;width:100%;border:0;border-radius:12px;background:#0b0d12}
-    .triple{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
-    .mini{padding:var(--space-5);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
-    .mini h3{font-size:1rem;margin-bottom:.35rem}
-    .mini p{font-size:.95rem;color:var(--muted)}
-    .list{display:grid;gap:.75rem}
-    .list a{padding:1rem 1rem;border-radius:12px;background:var(--surface-2);border:1px solid var(--border);font-weight:600}
-    .muted{color:var(--muted);font-size:.95rem}
-    footer{padding:var(--space-8) 0;color:var(--muted);font-size:.92rem}
-    @media (max-width: 840px){
-      .triple{grid-template-columns:1fr}
+    button{font:inherit}
+
+    .frame{
+      max-width:1240px;
+      margin:0 auto;
+      padding:18px 18px 32px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:4px 4px 18px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .logo-mark{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .logo-text{
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-size:.9rem;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      border:1px solid transparent;
+      transition:.2s ease;
+    }
+
+    nav a:hover{
+      border-color:rgba(250,250,250,.28);
+      color:var(--text);
+    }
+
+    .hero-shell{
+      margin-top:18px;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(250,250,250,.08);
+      background:radial-gradient(circle at 18% 0%,rgba(248,230,164,.12) 0,rgba(22,8,39,.96) 36%,rgba(4,2,9,1) 100%);
+    }
+
+    .hero-top{
+      position:relative;
+      display:grid;
+      grid-template-columns:1.2fr .9fr;
+      min-height:320px;
+    }
+
+    .hero-art{
+      position:relative;
+      overflow:hidden;
+      background:radial-gradient(circle at 50% 0%,rgba(248,214,120,.18) 0,rgba(16,4,34,1) 40%,rgba(5,3,12,1) 100%);
+    }
+
+    .texture-overlay{
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(circle at 12% 20%,rgba(247,211,100,.32) 0,transparent 45%),
+        radial-gradient(circle at 85% 80%,rgba(236,188,90,.26) 0,transparent 45%),
+        radial-gradient(circle at 50% 50%,rgba(255,255,255,.05) 0,transparent 55%);
+      mix-blend-mode:screen;
+      opacity:.95;
+    }
+
+    .hero-core{
+      position:absolute;
+      inset:7%;
+      display:grid;
+      place-items:center;
+    }
+
+    .orb{
+      width:100%;
+      max-width:420px;
+      aspect-ratio:1/1;
+      border-radius:999px;
+      border:1px solid rgba(248,227,140,.36);
+      box-shadow:0 0 0 1px rgba(255,255,255,.18),0 0 0 14px rgba(248,227,140,.04);
+      position:relative;
+      display:grid;
+      place-items:center;
+    }
+
+    .orb::before{
+      content:"";
+      position:absolute;
+      inset:13%;
+      border-radius:inherit;
+      border:1px dashed rgba(248,224,142,.36);
+    }
+
+    .orb::after{
+      content:"";
+      position:absolute;
+      inset:26%;
+      border-radius:inherit;
+      border:1px solid rgba(248,224,142,.16);
+    }
+
+    .tick-ring{
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+    }
+
+    .tick-ring::before{
+      content:"";
+      position:absolute;
+      inset:4%;
+      border-radius:inherit;
+      border:1px solid rgba(248,224,142,.45);
+      mask:radial-gradient(circle at center,transparent 62%,#000 63%);
+    }
+
+    .hero-logo{
+      position:relative;
+      z-index:2;
+      display:grid;
+      place-items:center;
+    }
+
+    .hero-avatar{
+      width:168px;
+      height:168px;
+      object-fit:cover;
+      border-radius:999px;
+      border:2px solid rgba(247,210,107,.5);
+      box-shadow:
+        0 0 0 8px rgba(247,210,107,.08),
+        0 18px 40px rgba(0,0,0,.55);
+      background:#12081f;
+    }
+
+    .hero-copy{
+      padding:26px 26px 28px 18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:linear-gradient(135deg,rgba(10,6,24,.96) 0,rgba(18,7,37,.98) 45%,rgba(5,3,12,1) 100%);
+      border-left:1px solid rgba(250,250,250,.06);
+    }
+
+    .hero-copy-top{
+      max-width:420px;
+      margin-left:auto;
+    }
+
+    .tagline{
+      font-size:.9rem;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      color:var(--gold-soft);
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-size:2.1rem;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+      line-height:1.05;
+    }
+
+    .hero-copy-top p{
+      font-size:.97rem;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .pill{
+      border-radius:999px;
+      border:1px solid rgba(248,230,164,.45);
+      padding:6px 12px;
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--gold-soft);
+      background:rgba(20,13,32,.85);
+    }
+
+    .hero-copy-bottom{
+      margin-top:24px;
+      border-radius:18px;
+      padding:16px 14px;
+      background:rgba(8,6,20,.9);
+      border:1px solid rgba(250,250,250,.09);
+    }
+
+    .social-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:.85rem;
+      background:var(--panel-soft);
+      border:1px solid rgba(248,250,252,.18);
+      cursor:pointer;
+      min-height:44px;
+      transition:.2s ease;
+    }
+
+    .chip:hover{
+      border-color:rgba(247,210,107,.4);
+      transform:translateY(-1px);
+    }
+
+    .chip span:nth-child(1){
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--gold-soft);
+      box-shadow:0 0 10px rgba(248,214,120,.8);
+      flex:0 0 auto;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      grid-template-areas:
+        "twitch youtube"
+        "about .";
+      gap:20px;
+      margin-top:22px;
+    }
+
+    .area-twitch{grid-area:twitch}
+    .area-youtube{grid-area:youtube}
+    .area-about{grid-area:about}
+
+    .panel-card{
+      background:radial-gradient(circle at top,rgba(243,209,118,.08) 0,rgba(13,5,30,1) 55%);
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-soft);
+      padding:16px 16px 18px;
+      min-width:0;
+    }
+
+    .panel-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .panel-head h2{
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-size:1.2rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+
+    .panel-head small{
+      font-size:.8rem;
+      color:var(--muted);
+      text-align:right;
+    }
+
+    .panel-body{
+      border-radius:18px;
+      overflow:hidden;
+      background:#000;
+    }
+
+    iframe{
+      display:block;
+      border:0;
+      width:100%;
+    }
+
+    .twitch-main iframe{
+      aspect-ratio:16/9;
+    }
+
+    .youtube-embed iframe{
+      aspect-ratio:4/3;
+    }
+
+    .yt-info{
+      margin-top:10px;
+      font-size:.95rem;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .social-strip{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .social-tile{
+      background:linear-gradient(140deg,rgba(250,250,250,.06) 0,rgba(15,6,26,1) 60%);
+      border-radius:18px;
+      border:1px solid rgba(248,250,252,.14);
+      padding:14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .social-tile h3{
+      font-family:'Rajdhani',system-ui,sans-serif;
+      font-size:1rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:var(--gold-soft);
+    }
+
+    .social-tile p{
+      font-size:.9rem;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .social-link{
+      margin-top:6px;
+      font-size:.9rem;
+      color:var(--gold);
+    }
+
+    footer{
+      margin-top:20px;
+      font-size:.8rem;
+      color:var(--muted);
+      text-align:center;
+      padding:6px 0 0;
+    }
+
+    @media (max-width:980px){
+      .hero-top{
+        grid-template-columns:1fr;
+      }
+
+      .hero-copy{
+        border-left:none;
+        border-top:1px solid rgba(250,250,250,.08);
+        padding:20px 18px;
+      }
+
+      .hero-copy-top{
+        margin-left:0;
+      }
+
+      .content-grid,
+      .social-strip{
+        grid-template-columns:1fr;
+      }
+
+      .content-grid{
+        grid-template-areas:
+          "twitch"
+          "youtube"
+          "about";
+      }
+    }
+
+    @media (max-width:640px){
+      .frame{
+        padding:16px 12px 26px;
+      }
+
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+      }
+
+      .hero-shell{
+        border-radius:20px;
+      }
+
+      .hero-avatar{
+        width:140px;
+        height:140px;
+      }
+
+      h1{
+        font-size:1.7rem;
+      }
+
+      .panel-head{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .panel-head small{
+        text-align:left;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap brand">
-      <div class="logo">
-        <div class="mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 5H19V13C19 16.866 15.866 20 12 20C8.13401 20 5 16.866 5 13V5Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M8.5 9.5L11.5 12.5L15.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+  <div class="frame">
+    <header>
+      <div class="logo-mark">
+        <div class="logo-text">
+          <a href="https://jairobiix.es" target="_blank" rel="noopener noreferrer">Jairobiix</a>
         </div>
-        <span>Jairobiix</span>
       </div>
-      <nav class="links" aria-label="Redes principales">
-        <a class="btn primary" href="https://www.twitch.tv/jairobiix" target="_blank" rel="noopener noreferrer">Twitch</a>
-        <a class="btn" href="https://www.youtube.com/@Jairobiix" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <a class="btn" href="https://www.instagram.com/jairobiix/" target="_blank" rel="noopener noreferrer">Instagram</a>
+
+      <nav>
+        <a href="#twitch">Twitch</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#about">Sobre mí</a>
+        <a href="#social">Redes</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>Twitch, YouTube e Instagram en una sola página.</h1>
-      <p>Página simple para mostrar tu canal, tus vídeos y tus redes sin bloques de texto largos ni diseño recargado.</p>
-    </section>
-
-    <section class="grid">
-      <article class="card">
-        <div class="card-head">
-          <div>
-            <h2>Directo en Twitch</h2>
-            <p>Player del canal incrustado.</p>
+    <main>
+      <section class="hero-shell" aria-label="Presentación de Jairobiix">
+        <div class="hero-top">
+          <div class="hero-art" aria-hidden="true">
+            <div class="texture-overlay"></div>
+            <div class="hero-core">
+              <div class="orb">
+                <div class="tick-ring"></div>
+                <div class="hero-logo">
+                  <img
+                    src="./assets/logo.png"
+                    alt="Logo de Jairobiix"
+                    class="hero-avatar"
+                    width="1024"
+                    height="1024"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <a class="btn" href="https://www.twitch.tv/jairobiix" target="_blank" rel="noopener noreferrer">Abrir canal</a>
-        </div>
-        <div class="card-body">
-          <iframe class="video" src="https://player.twitch.tv/?channel=jairobiix&parent=localhost" allowfullscreen title="Twitch Jairobiix"></iframe>
-        </div>
-      </article>
 
-      <article class="card">
-        <div class="card-head">
-          <div>
-            <h2>Último vídeo de YouTube</h2>
-            <p>Bloque principal para destacar tu vídeo más reciente.</p>
+          <aside class="hero-copy">
+            <div class="hero-copy-top">
+              <div class="tagline">BIENVENIDO/A AL CAOS</div>
+              <h1>Jairobiix al mando: directos de juegos, momentos épicos, memes en vivo y alguna que otra derrota gloriosa.</h1>
+              <p>
+                Aquí venimos a disfrutar, competir y reírnos fuerte. Pulsa follow y déjate llevar.
+              </p>
+
+              <div class="pill-row">
+                <div class="pill">Momentos épicos</div>
+                <div class="pill">Gaming de risas</div>
+                <div class="pill">Fails y caos</div>
+              </div>
+            </div>
+
+            <div class="hero-copy-bottom">
+              <div class="social-row">
+                <a class="chip" href="https://www.twitch.tv/jairobiix" target="_blank" rel="noopener noreferrer">
+                  <span></span><span>Twitch · La magia en directo 😉</span>
+                </a>
+                <a class="chip" href="https://www.youtube.com/@jairobiixvod" target="_blank" rel="noopener noreferrer">
+                  <span></span><span>YouTube · Resubidos íntegros 😎</span>
+                </a>
+                <a class="chip" href="https://www.instagram.com/jairobiix" target="_blank" rel="noopener noreferrer">
+                  <span></span><span>Instagram · Mejores momentos y más 😁</span>
+                </a>
+              </div>
+
+              <div class="social-row" style="margin-top:10px">
+                <a class="chip" href="https://discord.gg/TnYb4QyVUn" target="_blank" rel="noopener noreferrer">
+                  <span></span><span>Discord</span>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="content-grid" aria-label="Contenido principal">
+        <article id="twitch" class="panel-card area-twitch">
+          <div class="panel-head">
+            <h2>Twitch</h2>
+            <small>Directo principal</small>
           </div>
-          <a class="btn" href="https://www.youtube.com/@Jairobiix" target="_blank" rel="noopener noreferrer">Ir a YouTube</a>
-        </div>
-        <div class="card-body">
-          <iframe class="video" id="youtube-player" src="https://www.youtube.com/embed?listType=user_uploads&list=Jairobiix" title="Último vídeo YouTube"></iframe>
-        </div>
-      </article>
+          <div class="panel-body twitch-main">
+            <iframe
+              src="https://player.twitch.tv/?channel=jairobiix&parent=jairobiix.es&muted=true"
+              title="Directo de Twitch de Jairobiix"
+              allowfullscreen></iframe>
+          </div>
+        </article>
 
-      <section class="triple">
-        <article class="mini">
-          <h3>Twitch</h3>
-          <p>Botón directo a tu canal y espacio para el directo.</p>
+        <article id="youtube" class="panel-card area-youtube">
+          <div class="panel-head">
+            <h2>YouTube</h2>
+            <small>Lista de subidas</small>
+          </div>
+          <div class="panel-body youtube-embed">
+            <iframe
+              src="https://www.youtube.com/embed?listType=playlist&list=UUvr8c9fbqeKxCqAaxEvLFwQ"
+              title="Últimos vídeos de YouTube"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
         </article>
-        <article class="mini">
-          <h3>YouTube</h3>
-          <p>Vídeo destacado y acceso rápido al canal.</p>
-        </article>
-        <article class="mini">
-          <h3>Instagram</h3>
-          <p>Enlace directo a tus reels y publicaciones.</p>
+
+        <article id="about" class="panel-card area-about">
+          <div class="panel-head">
+            <h2>Sobre mí</h2>
+            <small>Quién soy</small>
+          </div>
+          <p class="yt-info">
+            Soy un chico de 28 años al que le apasionan el gaming y la MotoGP.<br><br>
+            Convivo con TDAH, trastorno de la personalidad, ansiedad y depresión crónicas,
+            además de esquizofrenia, pero sigo luchando por salir adelante y plantar cara a las injusticias.<br><br>
+            Me considero una persona noble, y me encanta hacer que la gente se divierta y sea feliz,
+            aunque para eso toque hacer el tonto delante de la cámara.
+          </p>
         </article>
       </section>
 
-      <article class="card">
-        <div class="card-head">
-          <div>
-            <h2>Redes</h2>
-            <p>Accesos rápidos sin más vueltas.</p>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="list">
-            <a href="https://www.twitch.tv/jairobiix" target="_blank" rel="noopener noreferrer">Twitch — ver stream y canal</a>
-            <a href="https://www.youtube.com/@Jairobiix" target="_blank" rel="noopener noreferrer">YouTube — ver vídeos</a>
-            <a href="https://www.instagram.com/jairobiix/" target="_blank" rel="noopener noreferrer">Instagram — ver reels y publicaciones</a>
-          </div>
-        </div>
-      </article>
+    </main>
 
-      <p class="muted">Importante: cuando el dominio quede funcionando, cambia <strong>parent=localhost</strong> por tu dominio real en el bloque de Twitch.</p>
-    </section>
-  </main>
-
-  <footer class="wrap">
-    <p>Diseño simplificado para Jairobiix.</p>
-  </footer>
-
-  <script>
-    const youtubeFeed = 'https://www.youtube.com/feeds/videos.xml?channel_id=TU_CHANNEL_ID';
-    const rssProxy = 'https://api.rss2json.com/v1/api.json?rss_url=';
-    async function loadYouTubeFeed() {
-      const player = document.getElementById('youtube-player');
-      try {
-        const response = await fetch(rssProxy + encodeURIComponent(youtubeFeed));
-        const data = await response.json();
-        const first = data.items && data.items[0];
-        if (first && first.link) {
-          const match = first.link.match(/v=([^&]+)/);
-          if (match) player.src = `https://www.youtube.com/embed/${match[1]}`;
-        }
-      } catch (error) {
-        console.warn('No se pudo cargar YouTube automáticamente.', error);
-      }
-    }
-    loadYouTubeFeed();
-  </script>
+    <footer>
+      Jairobiix © 2026
+    </footer>
+  </div>
 </body>
 </html>
